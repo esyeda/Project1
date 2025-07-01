@@ -1,4 +1,3 @@
-#trip advisor 
 import os
 import requests
 from google import genai
