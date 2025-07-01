@@ -54,11 +54,11 @@ class Parser:
 
             r = requests.get(url, data=data).json()
             dFrame = pd.json_normalize(r)
-            dFrame.to_sql\
-                ("temp", con=self.engine, if_exists='append', index=True)
+            dFrame.to_sql("temp",\
+                con=self.engine, if_exists='append', index=True)
 
-        join_command = """ CREATE TABLE recommendations AS 
-        SELECT * FROM locations 
-        JOIN temp ON locations.location_id = temp.location_id;"""
+        join_command = """CREATE TABLE recommendations AS
+         SELECT * FROM locations
+         JOIN temp ON locations.location_id = temp.location_id;"""
         with self.engine.connect() as connection:
             connection.execute(db.text(join_command))
