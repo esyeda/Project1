@@ -9,6 +9,7 @@ with open('sampleJSON.txt', 'r') as file:
     locations = file.read()
 response = json.loads(locations)
 
+
 class Parser:
 
     def __init__(self, json):
@@ -38,7 +39,7 @@ class Parser:
             # (db.text(f"SELECT * FROM {tb_name};")).fetchall()
             # print(pd.DataFrame(query_result))
         self.get_ratings()
-    
+
     def get_ratings(self):
         if not isinstance(self.json, type([])):
             return
@@ -55,7 +56,7 @@ class Parser:
             dFrame = pd.json_normalize(r)
             dFrame.to_sql\
                 ("temp", con=self.engine, if_exists='append', index=True)
-        
+
         join_command = """ CREATE TABLE recommendations AS 
         SELECT * FROM locations 
         JOIN temp ON locations.location_id = temp.location_id;"""
