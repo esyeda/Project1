@@ -4,7 +4,6 @@ import os
 import requests
 
 
-
 class Parser:
 
     def __init__(self, json):
