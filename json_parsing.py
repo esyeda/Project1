@@ -54,8 +54,8 @@ class Parser:
 
             r = requests.get(url, data=data).json()
             dFrame = pd.json_normalize(r)
-            dFrame.to_sql("temp",\
-                con=self.engine, if_exists='append', index=True)
+            dFrame.\
+                to_sql("temp",con=self.engine, if_exists='append', index=True)
 
         join_command = """CREATE TABLE recommendations AS
          SELECT * FROM locations
