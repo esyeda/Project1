@@ -14,13 +14,13 @@ client = genai.Client(
 )
 
 # User Inputs
-city_input = input("Enter the city that youre looking suggestions for: ")
-category_input = input("What are you looking for — a hotel, restaurant, or attraction? ")
+city = input("Enter the city that youre looking suggestions for: ")
+category = input("What are you looking for — a hotel, restaurant, or attraction? ")
 
 # AI Prompt
 prompt = (
-    f"recommend the top {category_input} "
-    f"in {city_input} "
+    f"recommend the top {category} "
+    f"in {city} "
     f"and explain why it's better."
 )
 
