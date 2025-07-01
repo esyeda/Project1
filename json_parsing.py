@@ -10,6 +10,7 @@ with open('sampleJSON.txt', 'r') as file:
 response = json.loads(locations)
 
 class Parser:
+
     def __init__(self, json):
         if 'data' in json:
             self.json = json['data']
@@ -18,10 +19,10 @@ class Parser:
         self.df = pd.json_normalize(self.json)
         self.key = os.getenv('TRIPADVISOR_API_KEY')
         self.engine = db.create_engine('sqlite:///tripadv.db')
-        
+
     def write_to_database(self, tb_name):
         self.df.\
-        to_sql(tb_name, con=self.engine, if_exists='append', index=True)
+            to_sql(tb_name, con=self.engine, if_exists='append', index=True)
 
         # removing duplicates, this should work
         with self.engine.connect() as connection:
@@ -32,7 +33,7 @@ class Parser:
                     GROUP BY Name
                 );"""
             connection.execute(db.text(remove_dupes))
-            # query_result = 
+            # query_result =
             # connection.execute
             # (db.text(f"SELECT * FROM {tb_name};")).fetchall()
             # print(pd.DataFrame(query_result))
@@ -51,13 +52,12 @@ class Parser:
             }
 
             r = requests.get(url, data=data).json()
-            dataFrame = pd.json_normalize(r)
-            dataFrame.\
-            to_sql("temp", con=self.engine, if_exists='append', index=True)
+            dFrame = pd.json_normalize(r)
+            dFrame.to_sql\
+                ("temp", con=self.engine, if_exists='append', index=True)
         
         join_command = """ CREATE TABLE recommendations AS 
         SELECT * FROM locations 
         JOIN temp ON locations.location_id = temp.location_id;"""
         with self.engine.connect() as connection:
             connection.execute(db.text(join_command))
-        
