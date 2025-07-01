@@ -19,8 +19,8 @@ category = input("What are you looking for — a hotel, restaurant, or attractio
 
 # AI Prompt
 prompt = (
-    f"recommend the top {category} in {city} "
-    "and explain why it's better."
+    f"recommend the top {category} "
+    f"in {city} and explain why it's better."
 )
 
 # Specify the model to use and the messages to send
