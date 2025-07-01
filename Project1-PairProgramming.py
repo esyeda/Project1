@@ -27,7 +27,9 @@ prompt = (
 response = client.models.generate_content(
     model="gemini-2.5-flash",
     config=types.GenerateContentConfig(
-      system_instruction="You are a friendly travel assistant who gives helpful suggestions."
+        system_instruction=(
+            "You are a nice travel assistant who gives helpful suggestions."
+        )
     ),
     contents=prompt,
 )
