@@ -18,7 +18,10 @@ city_input = input("Enter the city that youre looking suggestions for: ")
 category_input = input("What are you looking for — a hotel, restaurant, or attraction? ")
 
 # AI Prompt
-prompt = f'recommend a toprated {category_input} in {city_input} and explain why its the better choice.'
+prompt = (
+    f"recommend a toprated {category_input} in {city_input} "
+    "and explain why it's the better choice."
+)
 
 # Specify the model to use and the messages to send
 response = client.models.generate_content(
