@@ -1,5 +1,7 @@
-''' Codio Day5 module: Google GenAi API. Used that lesson to write the following code'''
-import os 
+'''Codio Day5 module: Google GenAI API.'''
+'''This code was written using that lesson.'''
+
+import os
 from google import genai
 from google.genai import types
 
