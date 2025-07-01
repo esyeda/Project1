@@ -1,14 +1,7 @@
-import json
 import sqlalchemy as db
 import pandas as pd
 import os
 import requests
-
-locations = ''
-with open('sampleJSON.txt', 'r') as file:
-    locations = file.read()
-response = json.loads(locations)
-
 
 class Parser:
 
