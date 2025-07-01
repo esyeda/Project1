@@ -1,10 +1,10 @@
 import os
 import requests
 
-
 TRIPADVISOR_API_KEY = os.getenv('TRIPADVISOR_API_KEY')
-'''print("API KEY:", TRIPADVISOR_API_KEY)'''
-'''TRIPADVISOR_API_KEY = '6587D61217FA4ED8A4113B9511202EE7'''
+
+'''print("API KEY:", TRIPADVISOR_API_KEY)
+TRIPADVISOR_API_KEY = '6587D61217FA4ED8A4113B9511202EE7'''
 
 url = "https://api.content.tripadvisor.com/api/v1/location/search?language=en"
 
