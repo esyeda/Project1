@@ -8,11 +8,14 @@ from google.genai import types
 TRIPADVISOR_API_KEY = os.getenv('TRIPADVISOR_API_KEY')
 GENAI_KEY = os.getenv('GENAI_KEY')
 
-# Create an genAI client using the key from our environment variable
+# Create an genAI client
 genai.api_key = GENAI_KEY
 client = genai.Client(
-    api_key=my_api_key,
+    api_key=GENAI_KEY,
 )
+
+cy = input("Enter the city that youre looking suggestions for: ")
+cate = input("What are you looking for — a hotel, restaurant, or attraction? ")
 
 url = "https://api.content.tripadvisor.com/api/v1/location/search?language=en"
 data = {
@@ -21,21 +24,10 @@ data = {
     'category': cate
 }
 
-cy = input("Enter the city that youre looking suggestions for: ")
-cate = input("What are you looking for — a hotel, restaurant, or attraction? ")
-
 response = requests.get(url, params=data)
-print(response.status_code)
+
 print(response.json())
 
-#gen ai 
-
-# Create an genAI client using the key from our environment variable
-client = genai.Client(
-    api_key=my_api_key,
-)
-
-# AI Prompt
 prompt = (
     f"recommend the top {cate} "
     f"in {cy} and explain why it's better."
