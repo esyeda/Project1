@@ -14,13 +14,13 @@ client = genai.Client(
 )
 
 # User Inputs
-city = input("Enter the city that youre looking suggestions for: ")
-category = input("What are you looking for — a hotel, restaurant, or attraction? ")
+cy = input("Enter the city that youre looking suggestions for: ")
+cate = input("What are you looking for — a hotel, restaurant, or attraction? ")
 
 # AI Prompt
 prompt = (
-    f"recommend the top {category} "
-    f"in {city} and explain why it's better."
+    f"recommend the top {cate} "
+    f"in {cy} and explain why it's better."
 )
 
 # Specify the model to use and the messages to send
