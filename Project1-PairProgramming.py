@@ -19,7 +19,8 @@ category_input = input("What are you looking for — a hotel, restaurant, or att
 
 # AI Prompt
 prompt = (
-    f"recommend the top {category_input} in {city_input} "
+    f"recommend the top {category_input} "
+    f"in {city_input} "
     f"and explain why it's better."
 )
 
