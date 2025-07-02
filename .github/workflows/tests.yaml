@@ -16,5 +16,5 @@ jobs:
         run: python -m pip install --upgrade pip pytest
 
       - name: Test with unittest
-        working-directory: ./Project1-PairProgramming
+        working-directory: .
         run: python3 -m unittest test_parse.py
