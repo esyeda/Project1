@@ -42,7 +42,7 @@ for given in results[:5]:
 combined = ','.join(top_five)'''
 
 parser = Parser(data_of_trip)
-parser.write_to_database(cate)
+parser.write_to_database("cate")
 
 # Pull stored results
 db_results = parser.pull_list(cate, cy)
