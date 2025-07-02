@@ -54,3 +54,8 @@ ai_response = client.models.generate_content(
 )
 
 print(ai_response.text)
+
+from json_parsing import Parser
+
+parser = Parser(data_of_trip)
+parser.write_to_database('locations')
