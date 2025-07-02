@@ -26,32 +26,45 @@ data = {
 
 response = requests.get(url, params=data)
 data_of_trip = response.json()
-results = data_of_trip.get('data', [])
+#results = data_of_trip.get('data', [])
 
-top_five = []
+'''top_five = []
 for given in results[:5]:
     name = given.get('name')
     if name:
         top_five.append(name)
 
-combined = ','.join(top_five)
+combined = ','.join(top_five)'''
 
-prompt = (
-    f"here are the top {cate}s "
-    f"in {cy}: {combined}."
-    "based on these, recommend the better one and why"
-    "respond in two to three sentences"
-)
 
-# Specify the model to use and the messages to send
-ai_response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    config=types.GenerateContentConfig(
-        system_instruction=(
-            "You are a helpful travel assistant."
-        )
-    ),
-    contents=prompt,
-)
+parser = Parser(data_of_trip)
+parser.write_to_database('locations')
 
-print(ai_response.text)
+# Pull stored results
+db_results = parser.pull_list("locations", cy)
+for row in db_results:
+    name = row._mapping.get('name')
+
+    prompt = (
+        f"{name} is a {cate} "
+        f"in {cy}."
+        "respond in two to three sentences why its good"
+    )
+
+    # Specify the model to use and the messages to send
+    ai_response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        config=types.GenerateContentConfig(
+            system_instruction=(
+                "You are a helpful travel assistant."
+            )
+        ),
+        contents=prompt,
+    )
+
+    print(ai_response.text)
+
+    another_sugg = input("Do you want another suggestion? (Yes/No): ")
+    if another_sugg != "yes":
+        print("Enjoy!")
+        break
