@@ -56,7 +56,7 @@ for row in db_results:
 
     print(ai_response.text)
 
-    another_sugg = input("Do you want another suggestion? (Yes/No): ").lower().strip()
-    if another_sugg != "yes":
+    sugg = input("Want another suggestion? (Yes/No): ").lower().strip()
+    if sugg != "yes":
         print("Enjoy!")
         break
