@@ -36,17 +36,9 @@ class Parser:
                  f"WHERE \"address_obj.city\" = '{city}' LIMIT 10;")
         with self.engine.connect() as connection:
             result = connection.execute(db.text(query)).fetchall()
-            print(pd.DataFrame(result))
+            return result
 
     def drop(self, table_name):
         command = f"DROP TABLE IF EXISTS {table_name}"
         with self.engine.connect() as connection:
             connection.execute(db.text(command))
-
-
-with open('sample2.txt', 'r') as file:
-    jackson = json.loads(file.read())
-# print(jackson)
-test = Parser(jackson)
-test.write_to_database("test")
-test.pull_list("test", "Plano")
