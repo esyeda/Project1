@@ -38,7 +38,7 @@ combined = ','.join(top_five)
 
 prompt = (
     f"here are the top {cate}s "
-    f"in {cy}: (combined)."
+    f"in {cy}: {combined}."
     "based on these, recommend the better one and why"
     "respond in two to three sentences"
 )
@@ -55,6 +55,3 @@ ai_response = client.models.generate_content(
 )
 
 print(ai_response.text)
-
-parser = Parser(data_of_trip)
-parser.write_to_database('locations')
