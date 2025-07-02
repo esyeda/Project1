@@ -1,8 +1,6 @@
-import json
 import sqlalchemy as db
 import pandas as pd
 import os
-import requests
 from dotenv import load_dotenv
 
 
@@ -31,21 +29,21 @@ class Parser:
                 );"""
             connection.execute(db.text(remove_dupes))
     
+    # returns a list of lists, each holding
     def pull_list(self, table_name, city):
         query = (f"SELECT * FROM {table_name} "
                  f"WHERE \"address_obj.city\" = '{city}' LIMIT 10;")
+        items = []
         with self.engine.connect() as connection:
             result = connection.execute(db.text(query)).fetchall()
-            print(pd.DataFrame(result))
+            items = pd.DataFrame(result).values.tolist()
+        to_str = []
+        for item in items:
+            to_str.insert(len(to_str), ', '.join([str(val) for val in item]))
+        return to_str
+
 
     def drop(self, table_name):
         command = f"DROP TABLE IF EXISTS {table_name}"
         with self.engine.connect() as connection:
             connection.execute(db.text(command))
-
-with open('sample2.txt', 'r') as file:
-    jackson = json.loads(file.read())
-# print(jackson)
-test = Parser(jackson)
-test.write_to_database("test")
-test.pull_list("test", "Plano")
