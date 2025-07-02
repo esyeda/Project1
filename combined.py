@@ -30,7 +30,7 @@ response = requests.get(url, params=data)
 data_of_trip = response.json()
 
 parser = Parser(data_of_trip)
-parser.write_to_database("cate")
+parser.write_to_database(cate)
 
 # Pull stored results
 db_results = parser.pull_list(cate, cy)
