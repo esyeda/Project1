@@ -29,20 +29,8 @@ data = {
 response = requests.get(url, params=data)
 data_of_trip = response.json()
 
-#results = data_of_trip.get('data', [])
-
-'''top_five = []
-
-for given in results[:5]:
-    name = given.get('name')
-    if name:
-        top_five.append(name)
-
-
-combined = ','.join(top_five)'''
-
 parser = Parser(data_of_trip)
-parser.write_to_database(cate)
+parser.write_to_database("cate")
 
 # Pull stored results
 db_results = parser.pull_list(cate, cy)
@@ -68,7 +56,7 @@ for row in db_results:
 
     print(ai_response.text)
 
-    another_sugg = input("Do you want another suggestion? (Yes/No): ").lower().strip()
-    if another_sugg != "yes":
+    sugg = input("Want another suggestion? (Yes/No): ").lower().strip()
+    if sugg != "yes":
         print("Enjoy!")
         break
