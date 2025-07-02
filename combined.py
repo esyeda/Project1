@@ -37,7 +37,7 @@ combined = ','.join(top_five)
 
 prompt = (
     f"recommend the top {cate} "
-    f"in {cy}: (combined)." 
+    f"in {cy}: (combined)."
     "based on these, recommend the better one and why"
     "two to three sentences"
 )
