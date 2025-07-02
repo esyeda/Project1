@@ -2,6 +2,7 @@ import os
 import requests
 from google import genai
 from google.genai import types
+from json_parsing import Parser
 from dotenv import load_dotenv
 
 # Set environment variables
@@ -26,23 +27,36 @@ data = {
 }
 
 response = requests.get(url, params=data)
+data_of_trip = response.json()
+results = data_of_trip.get('data', [])
 
-print(response.json())
+top_five = []
+for given in results[:5]:
+    name = given.get('name')
+    if name:
+        top_five.append(name)
+
+combined = ','.join(top_five)
 
 prompt = (
     f"recommend the top {cate} "
-    f"in {cy} and explain why it's better."
+    f"in {cy}: (combined)."
+    "based on these, recommend the better one and why"
+    "two to three sentences"
 )
 
 # Specify the model to use and the messages to send
-response = client.models.generate_content(
+ai_response = client.models.generate_content(
     model="gemini-2.5-flash",
     config=types.GenerateContentConfig(
         system_instruction=(
-            "You are a nice travel assistant who gives helpful suggestions."
+            "You are a helpful travel assistant."
         )
     ),
     contents=prompt,
 )
 
-print(response.text)
+print(ai_response.text)
+
+parser = Parser(data_of_trip)
+parser.write_to_database('locations')
