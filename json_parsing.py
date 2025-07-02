@@ -43,6 +43,7 @@ class Parser:
         with self.engine.connect() as connection:
             connection.execute(db.text(command))
 
+
 with open('sample2.txt', 'r') as file:
     jackson = json.loads(file.read())
 # print(jackson)
