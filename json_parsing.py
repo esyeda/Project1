@@ -31,6 +31,7 @@ class Parser:
                     GROUP BY Name
                 );"""
             connection.execute(db.text(remove_dupes))
+            connection.commit()
 
     def pull_list(self, table_name, city):
         query = (f"SELECT * FROM {table_name} "

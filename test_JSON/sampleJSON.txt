@@ -1,0 +1,123 @@
+{
+  "data": [
+    {
+      "location_id": "20117197",
+      "name": "Self-Guided Scavenger Hunt: The Best of Plano, Texas",
+      "address_obj": {
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "address_string": "Plano, TX"
+      }
+    },    
+    {
+      "location_id": "560646",
+      "name": "Historic Downtown Plano",
+      "address_obj": {
+        "street1": "998 E. 15th Street",
+        "street2": "",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75074-5808",
+        "address_string": "998 E. 15th Street, Plano, TX 75074-5808"
+      }
+    },
+    {
+      "location_id": "56463",
+      "name": "Plano",
+      "address_obj": {
+        "state": "Texas",
+        "country": "United States",
+        "address_string": "Plano, TX"
+      }
+    },
+    {
+      "location_id": "15087565",
+      "name": "Sandman Signature Plano-Frisco Hotel",
+      "address_obj": {
+        "street1": "8451 Parkwood Boulevard",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75024-5983",
+        "address_string": "8451 Parkwood Boulevard, Plano, TX 75024-5983"
+      }
+    },
+    {
+      "location_id": "6468516",
+      "name": "Hilton Dallas/plano Granite Park",
+      "address_obj": {
+        "street1": "5805 Granite Parkway",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75024",
+        "address_string": "5805 Granite Parkway, Plano, TX 75024"
+      }
+    },
+    {
+      "location_id": "5951655",
+      "name": "Cambria Hotel Plano Frisco",
+      "address_obj": {
+        "street1": "7500 Parkwood Blvd",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75024-5964",
+        "address_string": "7500 Parkwood Blvd, Plano, TX 75024-5964"
+      }
+    },
+    {
+      "location_id": "1097444",
+      "name": "The Interurban Railway Museum",
+      "address_obj": {
+        "street1": "901 E 15th St",
+        "street2": "",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75074-5807",
+        "address_string": "901 E 15th St, Plano, TX 75074-5807"
+      }
+    },
+    {
+      "location_id": "10793449",
+      "name": "Sixty Vines - Plano",
+      "address_obj": {
+        "street1": "3701 Dallas Pkwy",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75093-7777",
+        "address_string": "3701 Dallas Pkwy, Plano, TX 75093-7777"
+      }
+    },
+    {
+      "location_id": "465130",
+      "name": "Love & War In Texas",
+      "address_obj": {
+        "street1": "601 E Plano Pkwy",
+        "street2": "",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75074-6733",
+        "address_string": "601 E Plano Pkwy, Plano, TX 75074-6733"
+      }
+    },
+    {
+      "location_id": "560644",
+      "name": "Arbor Hills Nature Preserve",
+      "address_obj": {
+        "street1": "6701 West Parker Road",
+        "street2": "",
+        "city": "Plano",
+        "state": "Texas",
+        "country": "United States",
+        "postalcode": "75093",
+        "address_string": "6701 West Parker Road, Plano, TX 75093"
+      }
+    }
+  ]
+}
