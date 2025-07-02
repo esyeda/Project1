@@ -3,8 +3,10 @@ import requests
 from google import genai
 from google.genai import types
 from json_parsing import Parser
+from dotenv import load_dotenv
 
 # Set environment variables
+load_dotenv()
 TRIPADVISOR_API_KEY = os.getenv('TRIPADVISOR_API_KEY')
 GENAI_KEY = os.getenv('GENAI_KEY')
 
@@ -55,3 +57,6 @@ ai_response = client.models.generate_content(
 )
 
 print(ai_response.text)
+
+parser = Parser(data_of_trip)
+parser.write_to_database('locations')
