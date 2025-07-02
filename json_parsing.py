@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 
 class Parser:
+
     def __init__(self, json):
         load_dotenv()
         if 'data' in json:
@@ -37,6 +38,7 @@ class Parser:
         with self.engine.connect() as connection:
             result = connection.execute(db.text(query)).fetchall()
             return result
+
 
     def drop(self, table_name):
         command = f"DROP TABLE IF EXISTS {table_name}"
