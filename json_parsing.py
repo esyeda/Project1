@@ -1,11 +1,14 @@
+import json
 import sqlalchemy as db
 import pandas as pd
 import os
 import requests
+from dotenv import load_dotenv
+
 
 class Parser:
-
     def __init__(self, json):
+        load_dotenv()
         if 'data' in json:
             self.json = json['data']
         else:
@@ -16,7 +19,7 @@ class Parser:
 
     def write_to_database(self, tb_name):
         self.df.\
-            to_sql(tb_name, con=self.engine, if_exists='append', index=True)
+            to_sql(tb_name, con=self.engine, if_exists='append', index=False)
 
         # removing duplicates, this should work
         with self.engine.connect() as connection:
@@ -27,30 +30,23 @@ class Parser:
                     GROUP BY Name
                 );"""
             connection.execute(db.text(remove_dupes))
-            # query_result =
-            # connection.execute
-            # (db.text(f"SELECT * FROM {tb_name};")).fetchall()
-            # print(pd.DataFrame(query_result))
-        self.get_ratings()
 
-    def get_ratings(self):
-        if not isinstance(self.json, type([])):
-            return
-        for location in self.json:
-            location_id = location['location_id']
-            url = """https://api.content.tripadvisor.com/
-            api/v1/location/search?language=en"""
-            data = {
-                'key': self.key,
-                'locationId': location_id
-            }
-
-            r = requests.get(url, data=data).json()
-            df = pd.json_normalize(r)
-            df.to_sql("temp", con=self.engine, if_exists='append', index=True)
-
-        join_command = """CREATE TABLE recommendations AS
-         SELECT * FROM locations
-         JOIN temp ON locations.location_id = temp.location_id;"""
+    def pull_list(self, table_name, city):
+        query = (f"SELECT * FROM {table_name} "
+                 f"WHERE \"address_obj.city\" = '{city}' LIMIT 10;")
         with self.engine.connect() as connection:
-            connection.execute(db.text(join_command))
+            result = connection.execute(db.text(query)).fetchall()
+            print(pd.DataFrame(result))
+
+    def drop(self, table_name):
+        command = f"DROP TABLE IF EXISTS {table_name}"
+        with self.engine.connect() as connection:
+            connection.execute(db.text(command))
+
+
+with open('sample2.txt', 'r') as file:
+    jackson = json.loads(file.read())
+# print(jackson)
+test = Parser(jackson)
+test.write_to_database("test")
+test.pull_list("test", "Plano")
