@@ -40,7 +40,6 @@ class Parser:
             result = connection.execute(db.text(query)).fetchall()
             return result
 
-
     def drop(self, table_name):
         command = f"DROP TABLE IF EXISTS {table_name}"
         with self.engine.connect() as connection:
