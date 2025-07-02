@@ -31,7 +31,7 @@ class Parser:
                 );"""
             connection.execute(db.text(remove_dupes))
             connection.commit()
-    
+
     # returns a list of lists, each holding
     def pull_list(self, table_name, city):
         query = (f"SELECT DISTINCT * FROM {table_name} "
@@ -50,11 +50,3 @@ class Parser:
         with self.engine.connect() as connection:
             connection.execute(db.text(command))
 
-with open('sample2.txt', 'r') as file:
-    jackson = json.loads(file.read())
-# print(jackson)
-test = Parser(jackson)
-test.write_to_database("test")
-val = test.pull_list("test", "Plano")
-# for i in val:
-#     print(i)
