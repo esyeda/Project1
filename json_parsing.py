@@ -1,8 +1,6 @@
-import json
 import sqlalchemy as db
 import pandas as pd
 import os
-import requests
 from dotenv import load_dotenv
 
 
