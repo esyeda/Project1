@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 
 class Parser:
+  
     def __init__(self, json):
         load_dotenv()
         if 'data' in json:
@@ -42,11 +43,3 @@ class Parser:
         command = f"DROP TABLE IF EXISTS {table_name}"
         with self.engine.connect() as connection:
             connection.execute(db.text(command))
-
-
-with open('sample2.txt', 'r') as file:
-    jackson = json.loads(file.read())
-# print(jackson)
-test = Parser(jackson)
-test.write_to_database("test")
-test.pull_list("test", "Plano")
