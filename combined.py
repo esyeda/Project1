@@ -3,8 +3,10 @@ import requests
 from google import genai
 from google.genai import types
 from json_parsing import Parser
+from dotenv import load_dotenv
 
 # Set environment variables
+load_dotenv()
 TRIPADVISOR_API_KEY = os.getenv('TRIPADVISOR_API_KEY')
 GENAI_KEY = os.getenv('GENAI_KEY')
 
@@ -38,10 +40,10 @@ combined = ','.join(top_five)'''
 
 
 parser = Parser(data_of_trip)
-parser.write_to_database('locations')
+parser.write_to_database(cate)
 
 # Pull stored results
-db_results = parser.pull_list("locations", cy)
+db_results = parser.pull_list(cate, cy)
 for row in db_results:
     name = row._mapping.get('name')
 
