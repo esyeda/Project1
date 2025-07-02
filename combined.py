@@ -29,18 +29,6 @@ data = {
 response = requests.get(url, params=data)
 data_of_trip = response.json()
 
-#results = data_of_trip.get('data', [])
-
-'''top_five = []
-
-for given in results[:5]:
-    name = given.get('name')
-    if name:
-        top_five.append(name)
-
-
-combined = ','.join(top_five)'''
-
 parser = Parser(data_of_trip)
 parser.write_to_database("cate")
 
