@@ -3,7 +3,6 @@
 Travel.AI is a Python-based tool that integrates the TripAdvisor API with Google Gemini API to 
 recommend the best hotels, restaurants, or attractions based on user input and location.
 
-
 ## General Info
 
 This project was developed as part of the SEO Tech Developer program. It demonstrates how to:
@@ -12,7 +11,9 @@ This project was developed as part of the SEO Tech Developer program. It demonst
 - Store and manage results in a local database
 - Integrate AI reasoning via Google Gemini
 
-## Technologies Used
+##  Technologies
+
+This project uses:
 
 - Python 3.11+
 - Pandas

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 
 class Parser:
-  
+
     def __init__(self, json):
         load_dotenv()
         if 'data' in json:
@@ -37,7 +37,8 @@ class Parser:
                  f"WHERE \"address_obj.city\" = '{city}' LIMIT 10;")
         with self.engine.connect() as connection:
             result = connection.execute(db.text(query)).fetchall()
-            print(pd.DataFrame(result))
+            return result
+
 
     def drop(self, table_name):
         command = f"DROP TABLE IF EXISTS {table_name}"
