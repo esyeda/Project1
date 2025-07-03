@@ -24,7 +24,8 @@ This project uses:
 - Google Generative AI API
 
 ## Setup Instructions
-
+Type 'git clone https://github.com/esyeda/Project1.git' (or any git cloning method) into the terminal,
+then type 'python3 combined.py' to begin
 
 ## Contact
 
