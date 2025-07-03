@@ -24,8 +24,12 @@ This project uses:
 - Google Generative AI API
 
 ## Setup Instructions
-Type 'git clone https://github.com/esyeda/Project1.git' (or any git cloning method) into the terminal,
-then type 'python3 combined.py' to begin
+
+- Clone this repo https://github.com/esyeda/Project1.git
+- Go into the folder `cd travel-ai`
+- Add API keys in `.env` file or export in terminal:  
+- Type `python3 combined.py` to begin
+
 
 ## Contact
 
