@@ -1,4 +1,4 @@
-#  Travel.AI – AI-Powered Travel Recommendation App
+#  Travel.AI – AI-Powered Travel Recommendation
 
 Travel.AI is a Python-based tool that integrates the TripAdvisor API with Google Gemini API to 
 recommend the best hotels, restaurants, or attractions based on user input and location.
